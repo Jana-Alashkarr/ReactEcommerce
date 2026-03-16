@@ -1,19 +1,20 @@
-import { useState } from "react";
+import { Route, Routes } from "react-router-dom";
 import "./App.css";
+import Home from "./pages/home";
+import Auth from "./pages/auth";
+import Checkout from "./pages/checkout";
+import Navbar from "./components/navbar";
 
 function App() {
-  const [name, setName] = useState("");
-  function changeName(event: any) {
-    const value = event?.target.value;
-    setName(value)
-  }
   return (
-   
-      <div>
-        <input type="text" onChange={changeName} />
-        <p>{name}</p>
-      </div>
-    
+    <div className="app">
+      <Navbar></Navbar>
+      <Routes>
+        <Route path="/" element={<Home></Home>}></Route>
+        <Route path="/auth" element={<Auth></Auth>}></Route>
+        <Route path="/checkout" element={<Checkout></Checkout>}></Route>
+      </Routes>
+    </div>
   );
 }
 
